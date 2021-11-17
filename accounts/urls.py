@@ -1,4 +1,4 @@
-from .views import register_request
+from .views import register_request, VerificationView
 
 from django.contrib.auth import views
 from django.urls import path
@@ -16,4 +16,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     # после этого
     path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+    path('activate/<uidb64>/<token>',
+         VerificationView.as_view(), name='activate'),
 ]

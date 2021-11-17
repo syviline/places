@@ -5,10 +5,15 @@
 <title>Django Authentication Example</title>
 </head>
 <body>
+  <header class="header">
+    <span  class="container text-center h2">Plames Project</span>
+    <a href="{% url 'main:profile' %}">MY</a>
+    {% if user.is_authenticated %} I:{{ user.username }} {% endif %}
+  </header>
   <div  class="container">
     <div  class="row justify-content-center">
       <div  class="col-4">
-      <h1  class="text-center">Plames Project</h1>
+      
       {% block main %}
       {% endblock %}
       </div>

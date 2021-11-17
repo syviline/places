@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<h3><p>Profile!</p></h3>
+<h5><a  href="{% url 'signup' %}">signup</a></h5>
+<h5><a  href="{% url 'login' %}">Log in</a></h5>
+<h5><a  href="{% url 'logout' %}">logout</a></h5>
+<h5><a  href="{% url 'password_reset' %}">password_reset</a></h5>
+<h5><a  href="{% url 'password_reset_done' %}">password_reset_done</a></h5>
+
+<h5><a  href="{% url 'password_reset_complete' %}">password_reset_complete</a></h5>
+
+{% endblock %}
