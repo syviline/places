@@ -11,6 +11,12 @@ class Place(models.Model):
     notes = models.TextField(blank=True, null=True)
     date_visited = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    search = models.TextField()  # contains name + description + address in lower case,
+    # search uses this field
+    description = models.TextField(null=True)  # description of place
+    latitude = models.CharField(max_length=255)  # широта
+    longitude = models.CharField(max_length=255)  # долгота
+    hashtags = models.TextField(null=True)  # хэштеги
 
     def save(self, *args, **kwargs):
         # Get reference of previous version of this place
