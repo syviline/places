@@ -1,7 +1,8 @@
 {% extends 'main/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <h2>Создать новое место</h2>
     {{ form|crispy }}
     <button type="submit">Создать</button>

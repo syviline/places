@@ -40,7 +40,9 @@
         </div>
         {% for place in places %}
         <div class="object">
+            {% if place.photo.url %}
             <img src="{{ place.photo.url }}" alt="" class="img">
+            {% endif %}
             <h2>{{ place.name }}</h2>
             {% if place.description %}
             <h5>{{ place.description }}</h5>

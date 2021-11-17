@@ -1,0 +1,6 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h1>{{ place.name }}</h1>
+<img src="{{ place.photo.url }}" alt="" class="viewplace_image">
+<div class="place_info">{{ place.description }}</div>
+{% endblock %}
