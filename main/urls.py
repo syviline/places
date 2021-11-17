@@ -8,5 +8,6 @@ urlpatterns = [
     path('profile', profile, name='profile'),
     path('places', views.places, name='places'),
     path('add_place', views.add_place, name='add_place'),
-    path('place/<int:id>', views.view_place, name='view_place')
+    path('place/<int:id>', views.view_place, name='view_place'),
+    path('get_places', views.get_places)
 ]

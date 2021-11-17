@@ -7,27 +7,7 @@
         <button type="button" id="searchbtn">Найти</button>
     </form>
     <h1 style="margin-top: 20px;">Памятные места</h1>
-    <div class="memory-places">
-        <div class="object">
-            <a href="/add_place">
-                <div class="add_place">
-                    <img src="{% static 'icons/add.svg' %}" alt="">
-                    <span>Добавить место</span>
-                </div>
-            </a>
-        </div>
-        {% for place in places %}
-        <div class="object">
-            <a href="/place/{{ place.id }}">
-                <img src="{{ place.photo.url }}" alt="" class="img">
-                <h2>{{ place.name }}</h2>
-                {% if place.description %}
-                <h5>{{ place.description }}</h5>
-                {% endif %}
-            </a>
-        </div>
-        {% endfor %}
-    </div>
+    <div class="memory-places"></div> <!-- Добавляется через js -->
     <h1 style="margin-top: 20px;">Серии</h1>
     <div class="memory-places">
         <div class="object">
@@ -51,4 +31,6 @@
         {% endfor %}
     </div>
 </div>
+<script src="{% static 'scripts/vars.js' %}"></script>
+<script src="{% static 'scripts/places.js' %}"></script>
 {% endblock %}
