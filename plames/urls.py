@@ -22,5 +22,5 @@ app_name = "_main"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('accounts.urls')),
-    path('', views.index, name="index"),
+    path('', include('main.urls')),
 ]
