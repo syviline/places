@@ -1,0 +1,14 @@
+django-admin startproject plames
+py manage.py startapp main
+py manage.py startapp auth
+
+python manage.py runserver
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+
+
+py -m pip freeze > CovidManager/requirements.txt
+pip install -r CovidManager/requirements.txt
