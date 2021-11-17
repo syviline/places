@@ -17,6 +17,7 @@ class Place(models.Model):
     latitude = models.CharField(max_length=255)  # широта
     longitude = models.CharField(max_length=255)  # долгота
     hashtags = models.TextField(null=True)  # хэштеги
+    is_public = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         # Get reference of previous version of this place
@@ -43,3 +44,13 @@ class Place(models.Model):
     def __str__(self):
         photo_str = self.photo.url if self.photo else 'no photo'
         return f'{self.pk}: {self.name}, visited? {self.visited} on {self.date_visited}\nPhoto: {photo_str}'
+
+
+class Serie(models.Model):
+    user = models.ForeignKey('auth.User', null=False, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True)  # description of place
+    photo = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    search = models.TextField()  # contains name + description + address in lower case,
+    # search uses this field
+    places = models.ManyToManyField(Place)

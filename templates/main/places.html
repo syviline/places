@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <form class="search">
+        <input type="text" id="searchbar" placeholder="Поиск...">
+        <button type="button" id="searchbtn">Найти</button>
+    </form>
+    <h1 style="margin-top: 20px;">Памятные места</h1>
+    <div class="memory-places">
+        {% for place in places %}
+        <div class="object">
+            <a href="/place/{{ place.id }}">
+                <img src="{{ place.photo.url }}" alt="" class="img">
+                <h2>{{ place.name }}</h2>
+                {% if place.description %}
+                <h5>{{ place.description }}</h5>
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+        {% for place in places %}
+        <div class="object">
+            <img src="{{ place.photo.url }}" alt="" class="img">
+            <h2>{{ place.name }}</h2>
+            {% if place.description %}
+            <h5>{{ place.description }}</h5>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

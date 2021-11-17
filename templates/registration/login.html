@@ -1,4 +1,4 @@
-{% extends  'base.html' %}
+{% extends 'registration/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block main %}
@@ -11,10 +11,11 @@
 <input type="hidden" name="next" value="{{ next }}">
 
 {{ form|crispy }}
+    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
 
 <button type="submit" class="btn btn-primary btn-block">Log in</button>
 </form>
-</div>
     Нет аккаунта? <a href="{% url 'signup' %}">Зарегистрируйтесь</a>
+</div>
 </div>
 {% endblock %}

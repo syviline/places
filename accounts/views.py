@@ -11,7 +11,9 @@ def register_request(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            user.is_active = False
+            user.save()
+            # login(request, user)
             messages.success(request, "Registration successful.")
             return redirect("main:index")
         return render(request=request, template_name="registration/signup.html", context={"form": form})

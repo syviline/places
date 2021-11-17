@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from plames import views
+from django.conf import settings
+from django.conf.urls.static import static
 
-app_name = "_main"
+# app_name = "_main"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('accounts.urls')),
     path('', include(('main.urls', 'main'), namespace='main')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
