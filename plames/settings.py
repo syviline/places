@@ -77,10 +77,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'syvilinedev@gmail.com'
-EMAIL_HOST_PASSWORD = 'yfqctzodpkhxpasq'
-EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = 'avgsfvqlhuizyjcr'
+EMAIL_PORT = 587
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

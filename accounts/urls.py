@@ -6,7 +6,7 @@ from django.urls import path
 urlpatterns = [
     path('signup/', register_request, name='signup'),
 
-    path('login/', views.LoginView.as_view(), name='login'),
+    path('login/', views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     # мы отправляем письмо  с потвердением
     path('password-reset/', views.PasswordResetView.as_view(), name='password_reset'),

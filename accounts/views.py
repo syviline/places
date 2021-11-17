@@ -5,6 +5,8 @@ from django.contrib import messages
 
 
 def register_request(request):
+    if request.user.is_authenticated:
+        return redirect('main:index')
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
