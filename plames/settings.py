@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'mapwidgets',
     'accounts',
     'main',
     'geo',
@@ -147,3 +148,15 @@ LOGIN_URL = '/auth/login'
 
 MEDIA_URL = '/user_images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "user_images")
+
+
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 15),
+        ("mapCenterLocationName", "moscow"),
+        ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'ru'}}),
+        ("markerFitZoom", 12),
+    ),
+    "GOOGLE_MAP_API_KEY": "AIzaSyCGKUoRZovWc48gTWpVun0XUiUHYEQhUos",
+    "LANGUAGE": "ru",
+}
