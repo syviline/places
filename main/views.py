@@ -10,15 +10,16 @@ from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def index(request):
-    vars = {'title': 'Обзор'}
-    return render(request, 'main/discover.html', vars)
+    _vars = {'title': 'Обзор'}
+    return render(request, 'main/discover.html', _vars)
 
 
 @login_required
 def places(request):
-    places = Place.objects.all()
-    vars = {'title': 'Мои места', 'places': places}
-    return render(request, 'main/places.html', vars)
+    _places = Place.objects.all()
+    print(_places)
+    _vars = {'title': 'Мои места', 'places': _places}
+    return render(request, 'main/places.html', _vars)
 
 
 @login_required

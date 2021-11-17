@@ -1,5 +1,5 @@
-{% load static %}
 <!doctype html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
                 <a href="{% url 'main:index' %}">Обзор</a>
                 <a href="{% url 'main:places' %}">Мои места</a>
             </div>
-            <div class="right">Привет, {{ request.user.username }}</div>
+            <div class="right">Привет, <a href="{% url 'main:profile' %}">{{ request.user.username }}</a></div>
         </div>
     </header>
     <div class="container body">
