@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container">
     <form class="search">
@@ -8,6 +8,14 @@
     </form>
     <h1 style="margin-top: 20px;">Памятные места</h1>
     <div class="memory-places">
+        <div class="object">
+            <a href="/add_place">
+                <div class="add_place">
+                    <img src="{% static 'icons/add.svg' %}" alt="">
+                    <span>Добавить место</span>
+                </div>
+            </a>
+        </div>
         {% for place in places %}
         <div class="object">
             <a href="/place/{{ place.id }}">
@@ -19,6 +27,17 @@
             </a>
         </div>
         {% endfor %}
+    </div>
+    <h1 style="margin-top: 20px;">Серии</h1>
+    <div class="memory-places">
+        <div class="object">
+            <a href="/add_serie">
+                <div class="add_place">
+                    <img src="{% static 'icons/add.svg' %}" alt="">
+                    <span>Добавить серию</span>
+                </div>
+            </a>
+        </div>
         {% for place in places %}
         <div class="object">
             <img src="{{ place.photo.url }}" alt="" class="img">
