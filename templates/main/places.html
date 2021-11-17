@@ -20,7 +20,7 @@
         </div>
         {% for place in places %}
         <div class="object">
-            {% if place.photo.url %}
+            {% if place.photo %}
             <img src="{{ place.photo.url }}" alt="" class="img">
             {% endif %}
             <h2>{{ place.name }}</h2>

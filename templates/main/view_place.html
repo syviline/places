@@ -2,6 +2,8 @@
 {% block content %}
 <h6 class="place_label">МЕСТО</h6>
 <h1>{{ place.name }}</h1>
-<img src="{{ place.photo.url }}" alt="" class="viewplace_image">
+{% if place.photo %}
+    <img src="{{ place.photo.url }}" alt="" class="viewplace_image">
+{% endif %}
 <div class="place_info">{{ place.description }}</div>
 {% endblock %}

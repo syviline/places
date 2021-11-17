@@ -6,7 +6,7 @@ from .models import Place
 class NewPlaceForm(forms.ModelForm):
     class Meta:
         model = Place
-        fields = ('name', 'latitude', 'longitude', 'description', 'photo', 'hashtags', 'is_public')
+        fields = ('name', 'latitude', 'longitude', 'address', 'description', 'photo', 'hashtags', 'is_public')
 
         widgets = {
             'hashtags': forms.TextInput()

@@ -7,42 +7,51 @@
 
 
     <div id="div_id_name" class="form-group"><label for="id_name" class=" requiredField">
-        Name<span class="asteriskField">*</span> </label>
+        Название<span class="asteriskField">*</span> </label>
         <div class=""><input type="text" name="name" maxlength="200" class="textinput textInput form-control"
                              required="" id="id_name"></div>
     </div>
-    <div id="div_id_latitude" class="form-group"><label for="id_latitude" class=" requiredField">
-        Latitude<span class="asteriskField">*</span> </label>
-        <div class=""><input type="text" name="latitude" maxlength="255" class="textinput textInput form-control"
-                             required="" id="id_latitude"></div>
+    <div class="row">
+        <div id="div_id_latitude" class="form-group col"><label for="id_latitude" class=" requiredField">
+            Широта<span class="asteriskField">*</span> </label>
+            <div class=""><input type="text" name="latitude" maxlength="255" class="textinput textInput form-control"
+                                 required="" id="id_latitude"></div>
+        </div>
+        <div id="div_id_longitude" class="form-group col"><label for="id_longitude" class=" requiredField">
+            Долгота<span class="asteriskField">*</span> </label>
+            <div class=""><input type="text" name="longitude" maxlength="255" class="textinput textInput form-control"
+                                 required="" id="id_longitude"></div>
+        </div>
     </div>
-    <div id="div_id_longitude" class="form-group"><label for="id_longitude" class=" requiredField">
-        Longitude<span class="asteriskField">*</span> </label>
-        <div class=""><input type="text" name="longitude" maxlength="255" class="textinput textInput form-control"
-                             required="" id="id_longitude"></div>
+    <div id="div_id_address" class="form-group"><label for="id_address" class=" requiredField">
+        Адрес<span class="asteriskField">*</span> </label>
+        <div class=""><input type="text" name="address" maxlength="255" class="textinput textInput form-control"
+                             required="" id="id_address"></div>
     </div>
-    <div id="div_id_description" class="form-group"><label for="id_description" class=" requiredField">
-        Description<span class="asteriskField">*</span> </label>
-        <div class=""><textarea name="description" cols="40" rows="10" class="textarea form-control" required=""
-                                id="id_description"></textarea></div>
-    </div>
+
+
     <div id="div_id_photo" class="form-group"><label for="id_photo" class="">
-        Photo
+        Основное фото
     </label>
         <div class=""><input type="file" name="photo" accept="image/*" class="clearablefileinput form-control-file"
                              id="id_photo"></div>
     </div>
     <div id="div_id_hashtags" class="form-group"><label for="id_hashtags" class=" requiredField">
-        Hashtags<span class="asteriskField">*</span> </label>
+        Теги<span class="asteriskField">*</span> </label>
         <div class=""><input type="text" name="hashtags" class="textinput textInput form-control" required=""
                              id="id_hashtags"></div>
+    </div>
+    <div id="div_id_description" class="form-group"><label for="id_description" class=" requiredField">
+        Описание<span class="asteriskField">*</span> </label>
+        <div class=""><textarea name="description" cols="40" rows="10" class="textarea form-control" required=""
+                                id="id_description"></textarea></div>
     </div>
     <div class="form-group">
         <div id="div_id_is_public" class="form-check"><input type="checkbox" name="is_public"
                                                              class="checkboxinput form-check-input" id="id_is_public"
                                                              checked=""> <label for="id_is_public"
                                                                                 class="form-check-label">
-            Is public
+            Публиковать
         </label></div>
     </div>
 

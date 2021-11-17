@@ -1,6 +1,7 @@
 django-admin startproject plames
 py manage.py startapp main
 py manage.py startapp auth
+py manage.py startapp geo
 
 python manage.py runserver
 

@@ -10,10 +10,12 @@ class Place(models.Model):
     visited = models.BooleanField(default=False)
     notes = models.TextField(blank=True, null=True)
     date_visited = models.DateField(blank=True, null=True)
-    photo = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='user_images/', blank=True, null=True, default="")
     search = models.TextField()  # contains name + description + address in lower case,
     # search uses this field
+
     description = models.TextField(null=True)  # description of place
+    address = models.CharField(max_length=255, null=True)  # адрес
     latitude = models.CharField(max_length=255)  # широта
     longitude = models.CharField(max_length=255)  # долгота
     hashtags = models.TextField(null=True)  # хэштеги
@@ -22,6 +24,8 @@ class Place(models.Model):
     def save(self, *args, **kwargs):
         # Get reference of previous version of this place
         old_place = Place.objects.filter(pk=self.pk).first()
+        self.search: models.TextField
+        self.search = (self.name + " " + self.description + " " + self.address + " " + self.hashtags).lower()
         # Deletes current photo, if any, from Place when updating it
         if old_place and old_place.photo:
             if old_place.photo != self.photo:
