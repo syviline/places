@@ -119,11 +119,13 @@ button {
 .object h2 {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
-    padding: 5px;
+    font-size: 24px;
+    padding: 5px 5px 0 5px;
 }
 
 .object h5 {
-    padding: 5px 15px;
+    font-size: 14px;
+    padding: 0 10px;
 }
 
 .object a {
@@ -134,6 +136,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    min-height: 300px;
 }
 
 .add_place {
@@ -159,4 +162,116 @@ button {
 .place_label {
     color: #78716C;
     margin-bottom: 0;
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pages .page-item {
+    padding: 5px 10px;
+    margin: 0 6px;
+    background-color: #93C5FD;
+    cursor: pointer;
+    outline: none;
+}
+
+.pages .page-item.chosen {
+    background-color: #1E3A8A;
+}
+
+.serie_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.serie_header {
+    display: flex;
+    align-items: center;
+}
+
+.place_info {
+    max-width: 400px;
+}
+
+.serie-container {
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.serie-container .middle {
+    width: 100%;
+}
+
+.arrow {
+    color: #6366F1;
+    font-weight: 700;
+    font-size: 36px;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.arrow.inactive {
+    color: #44403C;
+    cursor: default;
+}
+
+.header_a {
+    color: black;
+    transition: 0.1s;
+}
+
+.header_a:hover {
+    color: #44403C;
+    transition: 0.1s;
+}
+
+.serie-h-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.serie-h-header .middle {
+    flex: 1;
+}
+
+.serie-h-header .right {
+    text-align: right;
+}
+
+.delete-from-serie-btn {
+    font-size: 14px;
+    background-color: #EF4444;
+    cursor: pointer;
+}
+
+.serie-h-header .left, .right {
+    flex: 1;
+}
+
+.place-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.serie-place-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-header-place {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form a {
+    color: black;
 }

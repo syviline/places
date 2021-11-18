@@ -2,11 +2,12 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    <h1>Глобальный поиск</h1>
     <div class="search">
-        <input type="text" id="searchbar" placeholder="Поиск...">
+        <input type="text" id="searchbar" placeholder="Поиск..." {% if search %}value="{{ search }}"{% endif %}>
         <button type="button" id="searchbtn" onclick="searchFunc()">Найти</button>
     </div>
-    <h1 style="margin-top: 20px;" id="memory-places-h1">Памятные места</h1>
+    <h1 style="margin-top: 20px;" id="memory-places-h1">Места</h1>
     <div class="memory-places"></div> <!-- Добавляется через js -->
     <div class="pages memory-places-pages"></div> <!-- Тоже через js -->
     <h1 style="margin-top: 20px;" id="series-h1">Серии</h1>
@@ -14,5 +15,5 @@
     <div class="pages series-pages"></div> <!-- Тоже через js -->
 </div>
 <script src="{% static 'scripts/vars.js' %}"></script>
-<script src="{% static 'scripts/places.js' %}"></script>
+<script src="{% static 'scripts/global_search.js' %}"></script>
 {% endblock %}

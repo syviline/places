@@ -1,1 +1,37 @@
 {% extends 'main/base.html' %}
+
+{% block content %}
+<div class="search">
+    <input type="text" id="searchbar" placeholder="Поиск...">
+    <button type="button" id="searchbtn" onclick="goToSearch()">Найти</button>
+</div>
+<h2 style="margin-top: 20px;">Самые популярные</h2>
+<div class="memory-places">
+    {% for i in popular %}
+        <div class="object">
+            <a href="/place/{{i.id}}">
+                <img src="{{i.photo.url}}" alt="" class="img">
+                <h2>{{i.name}}</h2>
+                <h5>{{i.description}}</h5>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<h2 style="margin-top: 20px;">Самые новые</h2>
+<div class="memory-places">
+    {% for i in new %}
+        <div class="object">
+            <a href="/place/{{i.id}}">
+                <img src="{{i.photo.url}}" alt="" class="img">
+                <h2>{{i.name}}</h2>
+                <h5>{{i.description}}</h5>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    function goToSearch() {
+        window.location = '/search?search=' + document.querySelector('#searchbar').value
+    }
+</script>
+{% endblock %}

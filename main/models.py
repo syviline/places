@@ -6,20 +6,21 @@ from django.core.files.storage import default_storage
 # Create your models here.
 class Place(models.Model):
     user = models.ForeignKey('auth.User', null=False, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, verbose_name='Название')
     visited = models.BooleanField(default=False)
     notes = models.TextField(blank=True, null=True)
     date_visited = models.DateField(blank=True, null=True)
-    photo = models.ImageField(upload_to='user_images/', blank=True, null=True, default="")
+    photo = models.ImageField(upload_to='user_images/', blank=True, null=True, default="user_images/default.jpg", verbose_name='Фото')
     search = models.TextField()  # contains name + description + address in lower case,
     # search uses this field
 
-    description = models.TextField(null=True)  # description of place
-    address = models.CharField(max_length=255, null=True)  # адрес
-    latitude = models.CharField(max_length=255)  # широта
-    longitude = models.CharField(max_length=255)  # долгота
-    hashtags = models.TextField(null=True)  # хэштеги
-    is_public = models.BooleanField(default=True)
+    description = models.TextField(null=True, verbose_name='Описание')  # description of place
+    address = models.CharField(max_length=255, verbose_name='Адрес')  # адрес
+    latitude = models.DecimalField(max_digits=12, decimal_places=10, verbose_name='Широта')  # широта
+    longitude = models.DecimalField(max_digits=13, decimal_places=10, verbose_name='Долгота')  # долгота
+    hashtags = models.TextField(null=True, verbose_name='Хэштеги')  # хэштеги
+    is_public = models.BooleanField(default=True, verbose_name='Опубликовать')
+    views = models.IntegerField(default=0, null=False)
 
     def save(self, *args, **kwargs):
         # Get reference of previous version of this place
@@ -52,9 +53,11 @@ class Place(models.Model):
 
 class Serie(models.Model):
     user = models.ForeignKey('auth.User', null=False, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    description = models.TextField(null=True)  # description of place
-    photo = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    name = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(null=True, verbose_name='Описание')  # description of place
+    photo = models.ImageField(upload_to='user_images/', blank=True, null=True, default="user_images/default.jpg", verbose_name='Фото')
     search = models.TextField()  # contains name + description + address in lower case,
     # search uses this field
+    is_public = models.BooleanField(default=True, verbose_name='Опубликовать')
     places = models.ManyToManyField(Place)
+    views = models.IntegerField(default=0, null=False)

@@ -1,13 +1,16 @@
 {% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 
-<h3><p>Profile!</p></h3>
-<h5><a  href="{% url 'signup' %}">signup</a></h5>
-<h5><a  href="{% url 'login' %}">Log in</a></h5>
-<h5><a  href="{% url 'logout' %}">logout</a></h5>
-<h5><a  href="{% url 'password_reset' %}">password_reset</a></h5>
-<h5><a  href="{% url 'password_reset_done' %}">password_reset_done</a></h5>
-
-<h5><a  href="{% url 'password_reset_complete' %}">password_reset_complete</a></h5>
-
+<h3>{{ request.user.username }}</h3>
+<h5><a  href="{% url 'logout' %}" class="header_a" style="color: #1E3A8A; text-decoration: underline">Выйти из аккаунта</a></h5>
+<form method="POST" style="max-width: 400px; margin-top: 40px;">
+    {% if success %}
+        <div style="color: white; background-color: green; border-radius: 5px; padding: 5px 10px; border: 2px solid darkgreen">Ваш пароль успешно изменён!</div>
+    {% endif %}
+    <h2>Изменение пароля</h2>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Изменить</button>
+</form>
 {% endblock %}

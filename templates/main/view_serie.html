@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="serie_header">
+    {% if serie.photo %}<img src="{{ serie.photo.url }}" alt="" class="serie_image">{% endif %}
+    <div class="name" style="margin-left: 20px;">
+        <h6 class="place_label">СЕРИЯ</h6>
+        <h1>{{ serie.name }}</h1>
+    </div>
+</div>
+<h6 class="place_label" style="margin-top: 20px;">ОПИСАНИЕ СЕРИИ</h6>
+<div class="place_info">{{ serie.description }}</div>
+<h6 class="place_label" style="margin-top: 20px; text-align: center">МЕСТА</h6>
+<div class="serie-h-header">
+    <div class="left"></div>
+    <div class="middle"><h1 style="text-align: center" class="serie-place-name"></h1></div>
+    <div class="right">{% if serie.user == request.user %}<button class="delete-from-serie-btn" onclick="deleteFromSerie()">Удалить из серии</button>{% endif %}</div>
+</div>
+<h6 style="text-align: center" id="serieCounter">1/8</h6>
+<div class="serie-container">
+    <div class="left">
+        <span class="material-icons-round arrow arrow-back inactive" onclick="placeBack()">arrow_back</span>
+    </div>
+    <div class="middle serie-place-info">
+    </div>
+    <div class="right">
+        <span class="material-icons-round arrow arrow-forward" onclick="placeNext()">arrow_forward</span>
+    </div>
+</div>
+<script>
+    let serieid = {{ serie.id }}
+    let places = {{ places|safe }}
+</script>
+<script src="{% static 'scripts/vars.js' %}"></script>
+<script src="{% static 'scripts/serie.js' %}"></script>
+{% endblock %}

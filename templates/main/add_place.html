@@ -23,6 +23,7 @@
                                  required="" id="id_longitude"></div>
         </div>
     </div>
+    <button onclick="geo()" type="button" style="cursor: pointer">Определить геолокацию</button>
     <div id="div_id_address" class="form-group"><label for="id_address" class=" requiredField">
         Адрес<span class="asteriskField">*</span> </label>
         <div class=""><input type="text" name="address" maxlength="255" class="textinput textInput form-control"
@@ -51,11 +52,18 @@
                                                              class="checkboxinput form-check-input" id="id_is_public"
                                                              checked=""> <label for="id_is_public"
                                                                                 class="form-check-label">
-            Публиковать
+            Опубликовать для всех
         </label></div>
     </div>
 
     <button type="submit">Создать</button>
 </form>
-
+<script>
+    function geo() {
+        navigator.geolocation.getCurrentPosition(ev => {
+            document.querySelector('#id_latitude').value = ev.coords.latitude
+            document.querySelector('#id_longitude').value = ev.coords.longitude
+        })
+    }
+</script>
 {% endblock %}

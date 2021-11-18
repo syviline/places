@@ -1,9 +1,18 @@
 from django import forms
 from django.forms import FileInput, DateInput
-from .models import Place
+from .models import Place, Serie
 
 
 class NewPlaceForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['latitude'].widget.attrs.update(
+            {'min': -90, 'max': 90}
+        )
+        self.fields['longitude'].widget.attrs.update(
+            {'min': -180, 'max': 180}
+        )
+
     class Meta:
         model = Place
         fields = ('name', 'latitude', 'longitude', 'address', 'description', 'photo', 'hashtags', 'is_public')
@@ -12,6 +21,11 @@ class NewPlaceForm(forms.ModelForm):
             'hashtags': forms.TextInput()
         }
 
+
+class NewSerieForm(forms.ModelForm):
+    class Meta:
+        model = Serie
+        fields = ('name', 'description', 'photo', 'is_public')
 
 # Create a custom date input field, otherwise would get a plain text field
 class DateInput(forms.DateInput):

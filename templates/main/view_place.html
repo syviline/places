@@ -1,9 +1,35 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% if msg %}
+<div style="margin: 20px 0;">{{ msg }}</div>
+{% endif %}
 <h6 class="place_label">МЕСТО</h6>
-<h1>{{ place.name }}</h1>
+<div class="flex-header-place">
+    <h1>{{ place.name }}</h1>
+    {% if place.user == request.user %}
+    <a href="/edit_place/{{ place.id }}" class="header_a" style="padding: 5px 10px; font-size: 14px; margin-top: 10px;">Редактировать</a>
+    {% endif %}
+</div>
 {% if place.photo %}
     <img src="{{ place.photo.url }}" alt="" class="viewplace_image">
 {% endif %}
-<div class="place_info">{{ place.description }}</div>
+<div class="place-container" style="margin-top: 20px;">
+    <div class="left">
+        <h6 class="place_label">ОПИСАНИЕ</h6>
+        <div class="place_info">{{ place.description }}</div>
+    </div>
+    {% if place.user == request.user %}
+    <div class="add-to-serie" style="text-align: right">
+        <h6 class="place_label">ДОБАВИТЬ В СЕРИЮ</h6>
+        <form>
+            <select name="series" id="series-select" style="width: 100%; margin-top: 5px;">
+                {% for i in series %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" style="padding: 5px 10px; font-size: 14px; margin-top: 10px;">Добавить</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

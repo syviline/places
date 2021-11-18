@@ -8,23 +8,19 @@ let memoryPlaces = document.querySelector('.memory-places')
 let series = document.querySelector('.series')
 
 function appendElementsPlaces(response) {
-    if (search == '')
-        memoryPlaces.innerHTML += templates.add_place
     response.forEach(el => {
         memoryPlaces.innerHTML += templates.place.format(el.id, el.photo, el.name, el.description)
     })
-    if (response.length === 0 && search != '') {
+    if (response.length === 0) {
         memoryPlaces.innerHTML += templates.nothingFound
     }
 }
 
 function appendElementsSeries(response) {
-    if (search == '')
-        series.innerHTML += templates.add_serie
     response.forEach(el => {
         series.innerHTML += templates.serie.format(el.id, el.photo, el.name, el.description)
     })
-    if (response.length === 0 && search != '') {
+    if (response.length === 0) {
         series.innerHTML += templates.nothingFound
     }
 }
@@ -39,7 +35,7 @@ function searchFunc() {
 
 function updatePlaces() {
     let xhr = new XMLHttpRequest()
-    xhr.open('GET', url + 'get_places?page=' + pagePlaces.toString() + '&search=' + search)
+    xhr.open('GET', url + 'get_places?page=' + pagePlaces.toString() + '&search=' + search + '&global=true')
     xhr.send()
     xhr.onload = () => {
         let resp = JSON.parse(xhr.response)
@@ -53,7 +49,7 @@ function updatePlaces() {
 
 function updateSeries() {
     let xhr = new XMLHttpRequest()
-    xhr.open('GET', url + 'get_series?page=' + pageSeries.toString() + '&search=' + search)
+    xhr.open('GET', url + 'get_series?page=' + pageSeries.toString() + '&search=' + search + '&global=true')
     xhr.send()
     xhr.onload = () => {
         let resp = JSON.parse(xhr.response)
@@ -102,5 +98,4 @@ function changePageSeries(page) {
     document.querySelector("#series-h1").scrollIntoView()
 }
 
-updatePlaces()
-updateSeries()
+searchFunc()

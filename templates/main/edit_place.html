@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Редактировать место</h2>
+
+
+    {{ form|crispy }}
+    <button type="submit" style="cursor: pointer">Сохранить</button>
+    <button style="background-color: #EF4444; cursor: pointer" type="button" onclick="deletePlace({{ place.id }})">Удалить место</button>
+</form>
+<script>
+    function deletePlace(id) {
+        if (confirm('Вы уверены что хотите удалить это место?')) {
+            window.location = '/delete_place/' + id.toString()
+        }
+    }
+</script>
+{% endblock %}
