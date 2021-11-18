@@ -1,7 +1,10 @@
 currentPlaceIndex = 0
 
 function updateCounter() {
-    document.querySelector('#serieCounter').innerHTML = (currentPlaceIndex + 1).toString() + '/' + places.length.toString()
+    if (places.length == 0)
+        document.querySelector('#serieCounter').innerHTML = ''
+    else
+        document.querySelector('#serieCounter').innerHTML = (currentPlaceIndex + 1).toString() + '/' + places.length.toString()
 }
 
 function placeNext() {
@@ -30,11 +33,18 @@ function placeBack() {
 function renderPlace() {
     updateCounter()
     let placeobj = document.querySelector('.serie-place-info')
-    placeobj.innerHTML = templates.placeInSerie.format(places[currentPlaceIndex].photo, places[currentPlaceIndex].description, places[currentPlaceIndex].latitude, places[currentPlaceIndex].longitude)
-    document.querySelector('.serie-place-name').innerHTML = '<a href="/place/{0}" class="header_a">{1}</a>'.format(places[currentPlaceIndex].id, places[currentPlaceIndex].name)
+    if (places.length != 0) {
+        placeobj.innerHTML = templates.placeInSerie.format(places[currentPlaceIndex].photo, places[currentPlaceIndex].description, places[currentPlaceIndex].latitude, places[currentPlaceIndex].longitude)
+        document.querySelector('.serie-place-name').innerHTML = '<a href="/place/{0}" class="header_a">{1}</a>'.format(places[currentPlaceIndex].id, places[currentPlaceIndex].name)
+    } else {
+        placeobj.innerHTML = '<div style="text-align: center">Тут пока пусто.</div>'
+        document.querySelector('.serie-place-name').innerHTML = ''
+    }
 }
 
 function deleteFromSerie() {
+    if (places.length == 0)
+        return
     if (confirm('Вы уверены что хотите удалить это место из серии?')) {
         let xhr = new XMLHttpRequest()
         xhr.open('GET', url + 'remove_from_serie/' + serieid + '/' + places[currentPlaceIndex].id)

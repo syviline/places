@@ -45,7 +45,8 @@ def register_request(request):
                 [email],
             )
             email.send(fail_silently=False)
-            messages.success(request, "Registration successful.")
+            return redirect('mail_confirm')
+            # messages.success(request, "Registration successful.")
             # return redirect("main:index")
         #return render(request=request, template_name="registration/signup.html", context={"form": form})
         # messages.error(request, "Unsuccessful registration. Invalid information.")
@@ -77,3 +78,7 @@ class VerificationView(View):
 
 def profile(request):
     return render(request, "accounts/profile.html")
+
+
+def mail_confirm(request):
+    return render(request, 'registration/confirm_your_mail.html')

@@ -119,12 +119,12 @@ button {
 .object h2 {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     padding: 5px 5px 0 5px;
 }
 
 .object h5 {
-    font-size: 14px;
+    font-size: 12px;
     padding: 0 10px;
 }
 
@@ -274,4 +274,25 @@ button {
 
 form a {
     color: black;
+}
+
+.hashtags {
+    display: flex;
+}
+
+.hashtag {
+    background-color: #93C5FD;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 10px 5px;
+}
+
+.hashtag a {
+    color: #1E3A8A;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 100px;
 }

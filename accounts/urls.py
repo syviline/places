@@ -1,4 +1,4 @@
-from .views import register_request, VerificationView
+from .views import register_request, VerificationView, mail_confirm
 
 from django.contrib.auth import views
 from django.urls import path
@@ -19,4 +19,5 @@ urlpatterns = [
 
     path('activate/<uidb64>/<token>',
          VerificationView.as_view(), name='activate'),
+    path('mail-confirm', mail_confirm, name='mail_confirm')
 ]

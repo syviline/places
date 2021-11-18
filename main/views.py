@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 import json
 
-PLACES_PER_PAGE = 12
+PLACES_PER_PAGE = 8
 
 REPLACE_CHARS = '()!.,/;[]-=+_'
 
@@ -51,7 +51,7 @@ def get_places(request):
             places = places.order_by('-id')[(page-1)*PLACES_PER_PAGE:page*PLACES_PER_PAGE]
         placesarr = []
         for i in places:
-            placesarr.append({'id': i.id, 'name': i.name, 'photo': i.photo.url, 'description': i.description[:15]})
+            placesarr.append({'id': i.id, 'name': i.name[:15] + ('...' if len(i.name) > 15 else ''), 'photo': i.photo.url, 'description': i.description[:35] + '...'})
         return HttpResponse(json.dumps({'pagesAmount': elementsAmount // PLACES_PER_PAGE + 1, 'places': placesarr}))
     else:
         return HttpResponseNotAllowed(['GET'])
@@ -92,7 +92,7 @@ def add_place(request):
             obj = form.save(commit=False)
             obj.photo = form.cleaned_data['photo']
             obj.user = request.user
-            obj.hashtags = " ".join(obj.hashtags.replace('#', ' ').split())
+            obj.hashtags = " ".join(obj.hashtags.lower().replace('#', ' ').split())
             obj.search = form.cleaned_data['name'].lower() + ' ' + form.cleaned_data['description'].lower() + ' ' + obj.hashtags.lower()
             for i in REPLACE_CHARS:
                 obj.search.replace(i, ' ')
@@ -118,15 +118,18 @@ def view_place(request, id):
         place.save()
     a = request.GET.get('series', None)
     if a:
-        serie = Serie.objects.get(id=a)
+        serie = Serie.objects.get(id=a)  # AIzaSyApS9XpQZIbN-U9_2r3cTsXfREPDKP5kPc
         if place not in serie.places.all():
             serie.places.add(place)
             return redirect('/place/' + str(place.id) + '?msg=Место успешно добавлено!')
         else:
             return redirect('/place/' + str(place.id) + '?msg=Это место уже есть в серии!')
     msg = request.GET.get('msg', None)
+    hashtags = place.hashtags.split()
     series = Serie.objects.filter(user=request.user)
-    vars = {'title': place.name, 'place': place, 'series': series, 'msg': msg}
+    place.latitude = str(place.latitude).replace(',', '.')
+    place.longitude = str(place.longitude).replace(',', '.')
+    vars = {'title': place.name, 'place': place, 'series': series, 'msg': msg, 'hashtags': hashtags}
     return render(request, 'main/view_place.html', vars)
 
 

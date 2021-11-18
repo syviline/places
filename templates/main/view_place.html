@@ -13,10 +13,27 @@
 {% if place.photo %}
     <img src="{{ place.photo.url }}" alt="" class="viewplace_image">
 {% endif %}
+<div class="hashtags">
+    {% for i in hashtags %}
+    <div class="hashtag"><a href="/search?search={{i}}">#{{i}}</a></div>
+    {% endfor %}
+</div>
 <div class="place-container" style="margin-top: 20px;">
     <div class="left">
         <h6 class="place_label">ОПИСАНИЕ</h6>
         <div class="place_info">{{ place.description }}</div>
+        <br>
+        <h6 class="place_label">ПРОСМОТРОВ</h6>
+        <div class="place_info">{{ place.views }}</div>
+        <br>
+        <h6 class="place_label">АДРЕС</h6>
+        <div class="place_info">{{ place.address }}</div>
+        <br>
+        <h6 class="place_label">ШИРОТА</h6>
+        <div class="place_info">{{ place.latitude }}</div>
+        <br>
+        <h6 class="place_label">ДОЛГОТА</h6>
+        <div class="place_info">{{ place.longitude }}</div>
     </div>
     {% if place.user == request.user %}
     <div class="add-to-serie" style="text-align: right">
@@ -31,5 +48,22 @@
         </form>
     </div>
     {% endif %}
-</div>
+</div><br>
+<h6 class="place_label">КАРТА</h6>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var pos = {lat: {{place.latitude}}, lng: {{place.longitude}}}
+        var opt = {
+            center: pos,
+            zoom: 15
+        }
+        var map = new google.maps.Map(document.getElementById('map'), opt)
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map
+        })
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFupTLiFRmYfHWX5Oo3f3CgI4P1Bls4b8&callback=initMap" async defer></script>
 {% endblock %}

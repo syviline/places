@@ -10,9 +10,9 @@ String.prototype.format = function () { // форматирует строку. 
 
 
 let templates = {add_place: '<div class="object"><a href="/add_place"><div class="add_place"><img src="/static/icons/add.svg" alt=""><span>Добавить место</span></div></a></div>',
-    place: '<div class="object"><a href="/place/{0}"><img src="{1}" alt="" class="img"><h2>{2}</h2><h5>{3}</h5></a></div>',
+    place: '<div class="object"><a href="/place/{0}"><img src="{1}" alt="" class="img"><h2>{2}</h2><h5 style="box-shadow: inset 0 -14px 9px -7px rgba(255,255,255,1);"></h5></a></div>',
     add_serie: '<div class="object"><a href="/add_serie"><div class="add_place"><img src="/static/icons/add.svg" alt=""><span>Добавить серию</span></div></a></div>',
-    serie: '<div class="object"><a href="/serie/{0}"><img src="{1}" alt="" class="img"><h2>{2}</h2><h5>{3}</h5></a></div>',
+    serie: '<div class="object"><a href="/serie/{0}"><img src="{1}" alt="" class="img"><h2>{2}</h2><h5></h5></a></div>',
     pageElementPlaces: '<button class="page-item" id="page-item-{0}" onclick="changePagePlaces({0})">{0}</button>',
     pageElementPlacesChosen: '<button class="page-item chosen" id="page-item-{0}" onclick="changePagePlaces({0})">{0}</button>',
     pageElementSeries: '<button class="page-item" id="page-item-{0}" onclick="changePageSeries({0})">{0}</button>',

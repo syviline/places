@@ -16,8 +16,8 @@ class Place(models.Model):
 
     description = models.TextField(null=True, verbose_name='Описание')  # description of place
     address = models.CharField(max_length=255, verbose_name='Адрес')  # адрес
-    latitude = models.DecimalField(max_digits=12, decimal_places=10, verbose_name='Широта')  # широта
-    longitude = models.DecimalField(max_digits=13, decimal_places=10, verbose_name='Долгота')  # долгота
+    latitude = models.DecimalField(max_digits=22, decimal_places=20, verbose_name='Широта')  # широта
+    longitude = models.DecimalField(max_digits=23, decimal_places=20, verbose_name='Долгота')  # долгота
     hashtags = models.TextField(null=True, verbose_name='Хэштеги')  # хэштеги
     is_public = models.BooleanField(default=True, verbose_name='Опубликовать')
     views = models.IntegerField(default=0, null=False)

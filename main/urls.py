@@ -1,6 +1,5 @@
 
 from . import views
-from geo.views import geo
 from django.urls import path
 
 app_name = "main"
@@ -18,5 +17,4 @@ urlpatterns = [
     path('edit_place/<int:placeid>', views.edit_place, name='edit_place'),
     path('delete_place/<int:placeid>', views.delete_place),
     path('search', views.global_search, name='search'),
-    path('geo', geo, name="geo"),
 ]

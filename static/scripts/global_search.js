@@ -35,7 +35,7 @@ function searchFunc() {
 
 function updatePlaces() {
     let xhr = new XMLHttpRequest()
-    xhr.open('GET', url + 'get_places?page=' + pagePlaces.toString() + '&search=' + search + '&global=true')
+    xhr.open('GET', url + 'get_places?page=' + pagePlaces.toString() + '&search=' + search.toLowerCase() + '&global=true')
     xhr.send()
     xhr.onload = () => {
         let resp = JSON.parse(xhr.response)
@@ -49,7 +49,7 @@ function updatePlaces() {
 
 function updateSeries() {
     let xhr = new XMLHttpRequest()
-    xhr.open('GET', url + 'get_series?page=' + pageSeries.toString() + '&search=' + search + '&global=true')
+    xhr.open('GET', url + 'get_series?page=' + pageSeries.toString() + '&search=' + search.toLowerCase() + '&global=true')
     xhr.send()
     xhr.onload = () => {
         let resp = JSON.parse(xhr.response)
