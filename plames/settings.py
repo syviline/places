@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+if os.name == 'nt':
+    VENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(VENV_BASE, 'Lib\site-packages\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +30,7 @@ SECRET_KEY = 'django-insecure-)u!+#vl^72*1)(5r2-6bn+9%%#k0$ibq1)$_s6nsw^2k%n#vww
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -149,6 +153,7 @@ LOGIN_URL = '/auth/login'
 MEDIA_URL = '/user_images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "user_images")
 
+# GDAL_LIBRARY_PATH = r"venv\Lib\site-packages\GDAL-3.3.3.dist-info"
 
 MAP_WIDGETS = {
     "GooglePointFieldWidget": (
@@ -160,3 +165,5 @@ MAP_WIDGETS = {
     "GOOGLE_MAP_API_KEY": "AIzaSyCGKUoRZovWc48gTWpVun0XUiUHYEQhUos",
     "LANGUAGE": "ru",
 }
+
+STATIC_ROOT = "static2/"

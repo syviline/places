@@ -1,4 +1,7 @@
 from django.contrib.gis import forms
+from django.contrib.gis.db import models
+from django.contrib import admin
+
 from mapwidgets.widgets import GooglePointFieldWidget
 
 CUSTOM_MAP_SETTINGS = {
