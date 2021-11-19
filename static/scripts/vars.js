@@ -21,4 +21,4 @@ let templates = {add_place: '<div class="object"><a href="/add_place"><div class
     placeInSerie: '<img src="{0}" alt="" class="viewplace_image"><div class="serie-place-flex"><div class="place-description"><h6 class="place_label" style="margin-top: 20px;">ОПИСАНИЕ МЕСТА</h6><div class="place_info">{1}</div></div><div class="place-info" style="text-align: right"><h6 class="place_label" style="margin-top: 20px;">ШИРОТА</h6><div class="latitude">{2}</div><h6 class="place_label" style="margin-top: 20px;">ДОЛГОТА</h6><div class="longitude">{3}</div></div></div>'
 }
 
-let url = 'http://127.0.0.1:8000/'
+let url = '/'
